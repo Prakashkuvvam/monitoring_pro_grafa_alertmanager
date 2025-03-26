@@ -1,0 +1,20 @@
+groups:
+- name: example
+  rules:
+  - alert: HighTemperature
+    expr: app_temperature_celsius > 28
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      summary: "High temperature detected"
+      description: "Temperature is above 28°C for more than a minute"
+
+  - alert: HighExceptionRate
+    expr: increase(app_exceptions_total[5m]) > 10
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: "High exception rate"
+      description: "More than 10 exceptions in 5 minutes"
